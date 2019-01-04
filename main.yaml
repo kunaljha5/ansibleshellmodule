@@ -1,0 +1,12 @@
+- name: calling the ansible playbook to make the artifactory and fetch that
+  shell: |
+         if [[ !-d {{ ansible_env.HOME }}/deploy_path/ ]];then 
+         mkdir  -p {{ ansible_env.HOME }}/deploy_path/;
+         fi
+         curl -u user:password {{ art_url }} -o {{ ansible_env.HOME }}/deploy_path/
+         cd {{ ansible_env.HOME }}/deploy_path/
+         module_name=$(ls -lrth|awk '{print $9}'| tail -1)
+         cp -p $module_name {{ mule_home }}/apps/{{mod1}}/
+         cd {{ mule_home }}/apps/{{mod1}}/
+         unzip $module_name
+         

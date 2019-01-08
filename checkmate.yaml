@@ -1,0 +1,127 @@
+#try to copy this with correct indentation 
+# checkmarx.yaml will have it.
+# all the module names have been updated here. 
+# 
+#
+   - name: calling the ansible playbook to make the artifactory and fetch that
+     shell: |
+            mod=$(echo {{ item }} |cut -d, -f1)
+            ver=$(echo {{ item }} |cut -d, -f2)
+            mod1=$(echo $mod|tr '-' '_')
+            if [[ "crdtctr-api-raml" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/api_raml/crdtctr-api-raml/$mod-$ver.zip")
+            elif [[ "crdtctr-entity-client" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/entity_client/crdtctr-entity-client/$mod-$ver.zip")
+            elif [[ "crdtctr-entity-collateral" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/entity-collateral/crdtctr-entity-collateral/$mod-$ver.zip")
+            elif [[ "crdtctr-entity-document" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/entity_document/crdtctr-entity-document/$mod-$ver.zip")
+            elif [[ "crdtctr-entity-facility" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/entity_facility/crdtctr-entity-facility/$mod-$ver.zip")
+            elif [[ "crdtctr-entity-laon" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/entity_loan/crdtctr-entity-loan/$mod-$ver.zip")
+            elif [[ "crdtctr-entity-sm" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/entity_sm/crdtctr-entity-sm/$mod-$ver.zip")
+            elif [[ "crdtctr-entity-user" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/crdtctr-entity-user/crdtctr-entity-user/$mod-$ver.zip")
+            elif [[ "crdtctr-module-ldg" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/module_ldg/crdtctr-module-ldg/$mod-$ver.zip")
+            elif [[ "crdtctr-module-ncino" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/module_ncino/crdtctr-module-ncino/$mod-$ver.zip")
+            elif [[ "crdtctr-module-pbu" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/module_pbu/crdtctr-module-pbu/$mod-$ver.zip")
+            elif [[ "crdtctr-provider-arm" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/crdtctr_provider_arm/crdtctr-provider-arm/$mod-$ver.zip")
+            elif [[ "crdtctr-provider-brms" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/provider_brms/crdtctr-provider-brms/$mod-$ver.zip")
+            elif [[ "crdtctr-provider-cms" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/provider_cms/crdtctr-provider-cms/$mod-$ver.zip")
+            elif [[ "crdtctr-provider-dcrs" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/provider_dcrs/crdtctr-provider-dcrs/$mod-$ver.zip")
+            elif [[ "crdtctr-provider-gfs" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/provider_gfs/crdtctr-provider-gfs/$mod-$ver.zip")
+            elif [[ "crdtctr-provider-glp" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/provider_glp/crdtctr-provider-glp/$mod-$ver.zip")
+            elif [[ "crdtctr-provider-gpbs" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/provider_gpbs/crdtctr-provider-gpbs/$mod-$ver.zip")
+            elif [[ "crdtctr-provider-hd" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/provider_hd/crdtctr-provider-hd/$mod-$ver.zip")
+            elif [[ "crdtctr-provider-irr" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/provider_irr/crdtctr-provider-irr/$mod-$ver.zip")
+            elif [[ "crdtctr-provider-leo" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/provider_leo/crdtctr-provider-leo/$mod-$ver.zip")
+            elif [[ "crdtctr-provider-mra" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/provider_mra/crdtctr-provider-mra/$mod-$ver.zip")
+            elif [[ "crdtctr-provider-ncino" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/provider_ncino/crdtctr-provider-ncino/$mod-$ver.zip")
+            elif [[ "crdtctr-provider-others" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/provider_others/crdtctr-provider-others/$mod-$ver.zip")
+            elif [[ "crdtctr-provider-rp" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/provider_rp/crdtctr-provider-rp/$mod-$ver.zip")
+            elif [[ "crdtctr-provider-shipping" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/provider_shipping/crdtctr-provider-shipping/$mod-$ver.zip")
+            elif [[ "crdtctr-provider-ube" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/provider_ube/crdtctr-provider-ube/$mod-$ver.zip")
+            elif [[ "crdtctr-util-mrf" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/util_mrf/crdtctr-util-mrf/$mod-$ver.zip")
+            elif [[ "crdtctr-utils-audit" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/utils_audit/crdtctr-utils-audit/$mod-$ver.zip")
+            elif [[ "crdtctr-utils-cmd" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/utils_cmd/crdtctr-utils-cmd/$mod-$ver.zip")
+            elif [[ "crdtctr-utils-ds" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/utils_ds/crdtctr-utils-ds/$mod-$ver.zip")
+            elif [[ "crdtctr-utils-filepolling" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/utils_filepolling/crdtctr-utils-filepolling/$mod-$ver.zip")
+            elif [[ "crdtctr-utils-hpedigitalsafe" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/utils_hpedigitalsafe/crdtctr-utils-hpedigitalsafe/$mod-$ver.zip")
+            elif [[ "crdtctr-utils-jwt" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/utils_jwt/crdtctr-utils-jwt/$mod-$ver.zip")
+            elif [[ "crdtctr-utils-notification" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/utils_notification/crdtctr-utils-notification/$mod-$ver.zip")
+            elif [[ "crdtctr-utils-npi" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/utils_npi/crdtctr-utils-npi/$mod-$ver.zip")
+            elif [[ "crdtctr-utils-prodnotifier" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/utils_prodnotifier/crdtctr-utils-prodnotifier/$mod-$ver.zip")
+            elif [[ "crdtctr-utils-qlistener" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/utils_qlistener/crdtctr-utils-qlistener/$mod-$ver.zip")
+            elif [[ "crdtctr-utils-utility" == "$mod" ]]; then
+                module_art=("{{ baseurl }}/utils_utility/crdtctr-utils-utility/$mod-$ver.zip")
+            else
+                echo "wrong set of module name, exiting"
+                exit 127
+            fi
+            echo "$module_art"
+            if [[ {{ dest_node }} == "dit1" ]];then
+                DeployHost=192.168.77.21
+            elif [[ {{ dest_node }} == "dit2" ]]; then
+                DeployHost=192.168.77.21
+            elif [[ {{ dest_node }} == "dit3" ]]; then
+                DeployHost=192.168.77.21
+            elif [[ {{ dest_node }} == "sit1" ]]; then
+                DeployHost=192.168.77.21
+            elif [[ {{ dest_node }} == "sit2" ]]; then
+                DeployHost=192.168.77.21
+            elif [[ {{ dest_node }} == "sit3" ]]; then
+                DeployHost=192.168.77.21
+            elif [[ {{ dest_node }} == "uat1" ]]; then
+                DeployHost=192.168.77.21
+            elif [[ {{ dest_node }} == "uat2" ]]; then
+                DeployHost=192.168.77.21
+            elif [[ {{ dest_node }} == "t2" ]]; then
+                DeployHost=192.168.77.21
+            elif [[ {{ dest_node }} == "dit4" ]]; then
+                DeployHost=192.168.77.21
+            else
+                echo "host not defined hence exiting"
+                exit 128
+            fi
+            echo "$DeployHost"
+            module_art1="http://stash.compciv.org/ssa_baby_names/names.zip"
+            echo "$module_art1"
+            echo 'ansible-playbook hosts2.yaml -e "DeployHost='$DeployHost'" -e "Module='$module_art1'" -e "dest_node={{ dest_node }}" -e "mod1='$mod'"'
+            ansible-playbook hosts2.yaml -e "DeployHost=$DeployHost" -e "Module=$module_art1" -e "dest_node={{ dest_node }}" -e "mod1=$mod" -vvvv
+     args:
+       executable: /bin/bash
+     with_lines:
+       - "cat $HOME/test/report/final/report_filter.csv "
+     register: lookit

@@ -1,0 +1,73 @@
+
+   - name: trigger fucntional test for dit1
+     uri:
+       url: 'http://code-builds.bankofamerica.com/job/CRDTCTR/job/cc_api_acceptance/job/feature%252FIntegration_Smoke_Tests/BuildWithParamters?testEnvironment=dit1_3.8.2&cucumber.options=--tags+@SmokeTest,@nCino_SmokeTest'
+       method: POST
+       user: ur-user
+       password: ur-passwd
+       force_basic_auth: yes
+       status_code: 201
+       body_format: json
+     when:  dest_node  == 'dit1'
+
+
+
+   - name: trigger fucntional test dit2
+     uri:
+       url: 'http://code-builds.bankofamerica.com/job/CRDTCTR/job/cc_api_acceptance/job/feature%252FIntegration_Smoke_Tests/BuildWithParamters?testEnvironment=dit2_3.8.2&cucumber.options=--tags+@SmokeTest,@nCino_SmokeTest'
+       method: POST
+       user: ur-user
+       password: ur-passwd
+       force_basic_auth: yes
+       status_code: 201
+       body_format: json
+     when:  dest_node  == 'dit2'
+
+
+
+   - name: trigger fucntional test for sit1
+     uri:
+       url: 'http://code-builds.bankofamerica.com/job/CRDTCTR/job/cc_api_acceptance/job/feature%252FIntegration_Smoke_Tests/BuildWithParamters?testEnvironment=sit1&cucumber.options=--tags+@SmokeTest,@nCino_SmokeTest'
+       method: POST
+       user: ur-user
+       password: ur-passwd
+       force_basic_auth: yes
+       status_code: 201
+       body_format: json
+     when:  dest_node  == 'sit1'
+
+
+   - name: trigger fucntional test for sit2
+     uri:
+       url: 'http://code-builds.bankofamerica.com/job/CRDTCTR/job/cc_api_acceptance/job/feature%252FIntegration_Smoke_Tests/BuildWithParamters?testEnvironment=sit2&cucumber.options=--tags+@SmokeTest,@nCino_SmokeTest'
+       method: POST
+       user: ur-user
+       password: ur-passwd
+       force_basic_auth: yes
+       status_code: 201
+       body_format: json
+     when:  dest_node  == 'sit2'
+
+
+   - name: trigger fucntional test for LTA
+     uri:
+       url: 'http://code-builds.bankofamerica.com/job/CRDTCTR/job/cc_api_acceptance/job/feature%252FIntegration_Smoke_Tests/BuildWithParamters?testEnvironment=LTA&cucumber.options=--tags+@SmokeTest,@nCino_SmokeTest'
+       method: POST
+       user: ur-user
+       password: ur-passwd
+       force_basic_auth: yes
+       status_code: 201
+       body_format: json
+     when:  dest_node  == 'LTA'
+
+
+   - name: trigger fucntional test for UAT
+     uri:
+       url: 'http://code-builds.bankofamerica.com/job/CRDTCTR/job/cc_api_acceptance/job/feature%252FIntegration_Smoke_Tests/BuildWithParamters?testEnvironment=UAT&cucumber.options=--tags+@SmokeTest,@nCino_SmokeTest'
+       method: POST
+       user: ur-user
+       password: ur-passwd
+       force_basic_auth: yes
+       status_code: 201
+       body_format: json
+     when:  dest_node  == 'UAT'

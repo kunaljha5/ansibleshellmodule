@@ -1,0 +1,16 @@
+################################################################
+            if [[ {{ dest_node }} == "dit1" ]];then
+                DeployHost="192.168.77.21 SecondIP"
+            elif [[ {{ dest_node }} == "dit2" ]]; then
+                DeployHost="192.168.77.21 SecondIP"
+################################################################
+            echo $DeployHost| grep ' ' 2>/dev/null 1>/dev/null
+            if [[ $? -eq 0 ]]; then
+            DeployHost1=$(echo $DeployHost|awk '{print $1}')
+            ansible-playbook hosts2.yaml -e "DeployHost=$DeployHost1" -e "Module=$module_art1" -e "dest_node={{ dest_node }}" -e "mod1=$mod" -vvvv
+            DeployHost2=$(echo $DeployHost|awk '{print $2}')
+            ansible-playbook hosts2.yaml -e "DeployHost=$DeployHost2" -e "Module=$module_art1" -e "dest_node={{ dest_node }}" -e "mod1=$mod" -vvvv
+            else
+            ansible-playbook hosts2.yaml -e "DeployHost=$DeployHost" -e "Module=$module_art1" -e "dest_node={{ dest_node }}" -e "mod1=$mod" -vvvv
+            fi
+
